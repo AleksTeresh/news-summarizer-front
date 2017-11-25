@@ -25,7 +25,7 @@ class HomePage extends Component {
     const {history, actions} = this.props
 
     actions.search.clearTags()
-    actions.search.addTag(keyword.value)
+    actions.search.addTag({id: keyword.id, name: keyword.value})
     history.push('/search')
   }
 
