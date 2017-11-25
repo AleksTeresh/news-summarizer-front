@@ -19,9 +19,13 @@ import { syncHistoryWithStore } from 'react-router-redux'
 
 import store from './store'
 
-import HomePage from './home'
-import SearchPage from './search'
+
+import HomePage from './home/components'
+import SearchPage from './search/components'
+
 import { Header, Carousel } from './core/components'
+
+import SearchView from './search/components'
 
 const mainContainerDiv = {
   backgroundColor: "#fff",
@@ -35,7 +39,7 @@ const Root = (
       <div>
         <Header />
         <div className="container" style={ mainContainerDiv }>
-            <Carousel />
+            {/*<Carousel />*/}
             {/* <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/> */}
             <Switch>
                 <Route exact path="/" component={HomePage} />
