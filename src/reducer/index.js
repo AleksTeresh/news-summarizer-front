@@ -1,3 +1,9 @@
 
-export { default as search } from '../search/reducers'
-export { default as core } from '../core/reducers'
+
+import search from '../search/reducers'
+import core from '../core/reducers'
+
+export {
+  search,
+  core
+}

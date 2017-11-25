@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default class Navbar extends React.Component {
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import * as actionCreators from '../action-creators'
+
+export class Navbar extends React.Component {
     constructor (props) {
         super(props);
 
@@ -9,6 +14,8 @@ export default class Navbar extends React.Component {
             active: false
         };
         this.onClickHandler = this.onClickHandler.bind(this);
+
+        props.actions.core.fetchKeyWords(15)
     }
     onClickHandler() {
         this.setState({ active: this.state.active ? false : true });
@@ -49,3 +56,22 @@ export default class Navbar extends React.Component {
         );
     }
 }
+
+function mapStateToProps (state) {
+  return {
+
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: {
+      core: bindActionCreators(actionCreators, dispatch)
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar)

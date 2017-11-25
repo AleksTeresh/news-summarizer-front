@@ -11,7 +11,7 @@ export default function keyWordReducer (
   action
 ) {
   switch (action.type) {
-    case 'core-key-word-fetch-success':
+    case 'core-key-words-fetch-success':
       return {
         ...state,
         keyWords: action.keyWords

@@ -2,7 +2,7 @@
 
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import * as client from '../client'
+import * as client from '../../core/client'
 
 function * fetchArticles (action): Generator<any, any, any> {
   try {
@@ -19,8 +19,10 @@ function * fetchArticles (action): Generator<any, any, any> {
   }
 }
 
-function * coreSaga (): Generator<any, any, any> {
+function * searchSaga (): Generator<any, any, any> {
   yield takeEvery('search-articles-fetch-request', fetchArticles)
 }
 
-export default coreSaga
+export {
+  searchSaga
+}
