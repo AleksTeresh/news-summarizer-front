@@ -8,6 +8,7 @@ import {withRouter} from "react-router"
 import * as coreActions from '../../core/action-creators'
 import * as searchActions from '../../search/action-creators'
 import * as homeActions from '../action-creators'
+import Article from '../../core/components/Article'
 
 class HomePage extends Component {
   constructor(props) {
@@ -28,40 +29,17 @@ class HomePage extends Component {
     history.push('/search')
   }
 
-  renderArticle() {
-    let i = 0;
-    return (
-      <div>
-        <div key={i++} className="news-wrapper">
-          <div className="img-wrapper col-xs-3">
-            <img className="news-img" alt="article img" src="../../../src/static/img/tracer-wallpaper-wide.jpg" />
-          </div>
-          <div className="content-wrapper col-xs-8">
-            <div className="news-content">
-            </div>
-          </div>
-        </div>
-        <div key={i++} className="news-wrapper">
-          <div className="img-wrapper col-xs-3">
-            <img className="news-img" alt="article img" src="../../../src/static/img/tracer-wallpaper-wide.jpg" />
-          </div>
-          <div className="content-wrapper col-xs-8">
-            <div className="news-content">
-              <p>dfasdfasdfdsfadsfkamsdkfmaskdfmaksdfmkadsmfkeam kamefi ajif jaei fai jfia ejifa eifaji iaj fi</p>
-            </div>
-          </div>
-        </div>
-        <div key={i++} className="news-wrapper">
-          <div className="img-wrapper col-xs-3">
-            <img className="news-img" alt="article img" src="../../../src/static/img/tracer-wallpaper-wide.jpg" />
-          </div>
-          <div className="content-wrapper col-xs-8">
-            <div className="news-content">
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  renderArticles() {
+    const {articles} = this.props
+
+    return articles.map((article, i) => (
+      <Article
+        summary={article.content.substr(0, 200)}
+        header={article.header}
+        imageUrl={article.imageurl}
+        key={i}
+      />
+    ))
   }
   render() {
     const {keyWords} = this.props
@@ -79,7 +57,7 @@ class HomePage extends Component {
           onTagSelect={this.handleKeywordCloudTagSelect}
         />
         <div className="col-md-12 pull-left">
-          {this.renderArticle()}
+          {this.renderArticles()}
         </div>
         {/*<div className="col-md-3">*/}
           {/*<ul className="list-group">Global*/}
@@ -100,7 +78,8 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    keyWords: state.core.keyWords.keyWords
+    keyWords: state.core.keyWords.keyWords,
+    articles: state.home.articles
   }
 }
 
