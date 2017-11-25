@@ -1,7 +1,7 @@
 import { List } from 'immutable'
 
 const initialState = {
-  keyWords: List()
+  articles: List()
 }
 
 export default function homeReducer (
@@ -9,11 +9,11 @@ export default function homeReducer (
   action
 ) {
   switch (action.type) {
-    // case 'home-articles-fetch-success':
-    //   return {
-    //     ...state,
-    //     keyWords: action.keyWords
-    //   }
+    case 'home-articles-fetch-success':
+      return {
+        ...state,
+        articles: action.articles
+      }
     default:
       return state
   }

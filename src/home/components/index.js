@@ -7,6 +7,7 @@ import KeywordCloud from './KeywordCloud'
 import {withRouter} from "react-router"
 import * as coreActions from '../../core/action-creators'
 import * as searchActions from '../../search/action-creators'
+import * as homeActions from '../action-creators'
 
 class HomePage extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    console.log("Welcome to Homepage");
+    this.props.actions.home.fetchArticles(10)
   }
 
   handleKeywordCloudTagSelect(keyword) {
@@ -107,7 +108,8 @@ function mapDispatchToProps (dispatch) {
   return {
     actions: {
       core: bindActionCreators(coreActions, dispatch),
-      search: bindActionCreators(searchActions, dispatch)
+      search: bindActionCreators(searchActions, dispatch),
+      home: bindActionCreators(homeActions, dispatch)
     }
   }
 }

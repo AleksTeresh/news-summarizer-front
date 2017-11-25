@@ -38,12 +38,12 @@ export function getArticles (
   return fetch(
     '/api/articles?' +
     'limit=' + limit +
-    '&offset=' + offset
+    '&offset=' + offset +
     (keyWords ? ('&keyWords=' + keyWords.toArray) : '') +
     (categories ? ('&categories=' + categories.toArray) : '')
   )
     .then(responseJson)
-    .then((articles) => List(articles).map(ArticleUtils.fromPlain))
+    .then((articleResponse) => List(articleResponse.articles).map(ArticleUtils.fromPlain))
     // .catch(error)
 }
 
