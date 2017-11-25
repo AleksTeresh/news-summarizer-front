@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 
 class Article extends Component {
   render() {
-    const {summary, imageUrl, header, key} = this.props
+    const {summary, imageUrl, header} = this.props
 
     return (
-      <div key={key} className="news-wrapper">
+      <div className="news-wrapper">
         <div className="img-wrapper col-xs-3">
           <img className="news-img" alt="article img" src={imageUrl}/>
         </div>
