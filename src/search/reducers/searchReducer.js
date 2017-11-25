@@ -8,7 +8,7 @@ const initialState = {
   suggestions: List()
 }
 
-export default searchReducer (
+export default function searchReducer (
   state = initialState,
   action
 ) {

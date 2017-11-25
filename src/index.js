@@ -1,28 +1,48 @@
 'use strict'
 
+import './index.css'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap-theme.min.css'
+
+import 'font-awesome/css/font-awesome.min.css'
+import 'font-awesome/fonts/fontawesome-webfont.woff2'
+import 'font-awesome/fonts/fontawesome-webfont.woff'
+import 'font-awesome/fonts/fontawesome-webfont.ttf'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
-import { Router, Route, Redirect, hashHistory } from 'react-router'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import store from './store'
 
-import Search from './intro'
+import HomePage from './home'
+import { Header, Carousel } from './core/components'
 
-injectTapEventPlugin()
-store.subscribe(bindActors(
-  store,
-  ))
-const history = syncHistoryWithStore(hashHistory, store)
+const mainContainerDiv = {
+  backgroundColor: "#fff",
+  paddingBottom: "20px",
+  boxShadow: "0 0 30px grey"
+}
 
 const Root = (
   <Provider store={store}>
-      <Router history={history}>
-        <Route path='/search' component={Search} />
-        <Route path='*' component={() => (<div><h1>Page not found</h1><p><Link to='/'>Back</Link></p></div>)} />
-      </Router>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <div className="container" style={ mainContainerDiv }>
+            <Carousel />
+            {/* <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/> */}
+            <Switch>
+                <Route exact path="/" component={HomePage} />
+            </Switch>
+        </div>
+        {/* <Footer /> */}
+      </div>
+    </BrowserRouter>
   </Provider>
   )
 
