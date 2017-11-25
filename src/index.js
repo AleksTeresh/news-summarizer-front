@@ -20,6 +20,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 
 import HomePage from './home'
+import SearchPage from './search'
 import { Header, Carousel } from './core/components'
 
 const mainContainerDiv = {
@@ -38,6 +39,7 @@ const Root = (
             {/* <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/> */}
             <Switch>
                 <Route exact path="/" component={HomePage} />
+                <Route exact path="/search" component={SearchPage} />
             </Switch>
         </div>
         {/* <Footer /> */}
