@@ -142,7 +142,7 @@ body {
     padding: 4%;
     margin-left: 8%;
     margin-right: 8%;
-    position: relative;
+    /*position: relative;*/
     width: auto;
     height: 15vw;
 }
@@ -205,4 +205,9 @@ body {
         height: 20vw;
     }
 }
+
+.react-tags__suggestions {
+    z-index: 9999;
+}
+
 /*news content style*/

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import ReactTag from 'react-tag-autocomplete'
 
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 import * as actionCreators from './action-creators'
 
@@ -11,62 +11,65 @@ import Article from '../core/components/Article';
 import Carousel from '../core/components/Carousel';
 
 export class SearchPage extends Component {
-  constructor(props){
-      super(props);
+  constructor(props) {
+    super(props);
 
-      this.state={
+    this.state = {}
 
-      }
+    console.log(this.props.search)
 
-      console.log(this.props.search)
-
-      this.props.actions.search.fetchArticles(15, this.props.search.search.tags)
+    this.props.actions.search.fetchArticles(15, this.props.search.search.tags)
   }
-  componentWillMount(){
-      const { category } = this.props.match.params;
+
+  componentWillMount() {
+    const {category} = this.props.match.params;
   }
+
   render() {
-      const { category } = this.props.match.params;
-      const { actions, search, allKeyWords } = this.props
+    const {category} = this.props.match.params;
+    const {actions, search, allKeyWords} = this.props
 
-      return (
-        <div>
-          <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
-              <AutoTags
-                onTagAdd={(a) => {
+    return (
+      <div>
+        <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+          <AutoTags
+            styles={{position: 'relative'}}
+            onTagAdd={(a) => {
                     actions.search.addTag(a)
                     this.props.actions.search.fetchArticles(15, this.props.search.search.tags.push(a))
                 }}
-                onTagRemove={(i) => {
+            onTagRemove={(i) => {
                   actions.search.removeTag(i)
                   this.props.actions.search.fetchArticles(15, this.props.search.search.tags.remove(i))
                 }}
-                tags={search.search.tags}
-                suggestions={allKeyWords.map((p) => ({ id: p.id, name: p.word }))} />
-                {
-                  search.article.articles.map((p, i) => (
-                    <Article
-                      summary={p.content.substr(0, 200)}
-                      header={p.header}
-                      imageUrl={p.imageurl}
-                      key={i}
-                    />
-                  ))
-                }
+            tags={search.search.tags}
+            suggestions={allKeyWords.map((p) => ({ id: p.id, name: p.word }))}/>
+          <div>
+            {
+              search.article.articles.map((p, i) => (
+                <Article
+                  summary={p.content.substr(0, 200)}
+                  header={p.header}
+                  imageUrl={p.imageurl}
+                  key={i}
+                />
+              ))
+            }
           </div>
         </div>
-      )
+      </div>
+    )
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     search: state.search,
     allKeyWords: state.core.keyWords.keyWords
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: {
       search: bindActionCreators(actionCreators, dispatch)
