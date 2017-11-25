@@ -8,6 +8,7 @@ import createSagaMiddleware from 'redux-saga'
 
 import { coreSaga } from './core/sagas'
 import { searchSaga } from './search/sagas'
+import { homeSaga } from './home/sagas'
 
 import * as reducers from './reducer'
 
@@ -36,5 +37,6 @@ const store = createStore(
 // then run the saga
 sagaMiddleware.run(coreSaga)
 sagaMiddleware.run(searchSaga)
+sagaMiddleware.run(homeSaga)
 
 export default store

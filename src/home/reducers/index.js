@@ -9,7 +9,7 @@ export default function homeReducer (
   action
 ) {
   switch (action.type) {
-    // case 'home-articles-fetch':
+    // case 'home-articles-fetch-success':
     //   return {
     //     ...state,
     //     keyWords: action.keyWords

@@ -1,6 +1,6 @@
-export function setKeyword(keyword) {
+export function fetchArticles(limit) {
   return {
-    type: 'home-keyword-set',
-    keyword
+    type: 'home-articles-fetch-request',
+    limit
   }
 }

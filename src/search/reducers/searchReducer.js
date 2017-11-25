@@ -2,14 +2,16 @@
 
 import { List } from 'immutable'
 
-const initialState = {
-  search: '',
-  tags: List(),
-  suggestions: List()
+function getInitState () {
+  return {
+    search: '',
+    tags: List(),
+    suggestions: List()
+  }
 }
 
 export default function searchReducer (
-  state = initialState,
+  state = getInitState (),
   action
 ) {
   switch (action.type) {
@@ -29,10 +31,12 @@ export default function searchReducer (
     case 'search-tag-add':
       return {
         ...state,
-        tags: state.tags.push(state.suggestions.get(action.suggestionIdx)),
+        tags: state.tags.push(action.suggestionIdx),
+        // tags: state.tags.push(state.suggestions.get(action.suggestionIdx)),
         suggestions: state.suggestions.remove(action.suggestionIdx)
       }
-
+    case 'search-tags-clear':
+      return getInitState()
     default:
       return state
   }
