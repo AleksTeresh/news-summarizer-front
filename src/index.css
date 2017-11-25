@@ -56,12 +56,8 @@ body {
     background-color: rgba(0,0,0,0.04);
 }
 
-.footer {
-    background-color: grey;
-    padding: 10px;
-}
-@media (max-width: 768px){
-    .navbar-nav li img {
+@media (max-width: 767px){
+    .navbar-nav li i {
         display: none;
     }
     .navbar-nav li:first-child {
@@ -73,7 +69,7 @@ body {
         width: 80px;
         background-color: #2F5597;
         position: fixed;
-        top: 27vh;
+        top: 30vh;
         left: 0vw;
         border-radius: 0 10px 10px 0;
     }
@@ -91,18 +87,17 @@ body {
         width: 100%;
         height: auto;
         background-color: #2F5597;
-        transition: all 0.3s, border-bottom 1ms;
-        -webkit-transition: all 0.3s, border-bottom 1ms; /* For Safari 3.1 to 6.0 */
+        transition: all 0.3s, border-bottom 1ms ease-in;
+        -webkit-transition: all 0.3s, border-bottom 1ms ease-in; /* For Safari 3.1 to 6.0 */
     }
     .navbar-nav li span {
         display: none;
         transition: all 1s;
         -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
     }
-    .navbar-nav li img {
+    .navbar-nav li i {
         width: 2em;
         color: #fff;
-        filter: invert(1);
         transition: all 0.5s;
         -webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
     }
@@ -125,7 +120,7 @@ body {
     .navbar-nav > li:hover:first-child a {
         color: #fff;
     }
-    .navbar-nav li:hover img, .navbar-nav li.active img{
+    .navbar-nav li:hover i, .navbar-nav li.active i{
         display:none;
     }
     .navbar-nav li:hover span, .navbar-nav li.active span {
@@ -136,65 +131,82 @@ body {
         vertical-align: middle
     }
 }
+/*carausel style*/
+.item-text-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: center;
+}
+/*carausel style*/
 
 /*news content style*/
 .news-wrapper {
-    padding: 4%;
-    margin-left: 8%;
-    margin-right: 8%;
-    /*position: relative;*/
+    padding: 30px 0px 30px 0;
+    position: relative;
     width: auto;
-    height: 15vw;
+    height: 18vw;
+    border-bottom: 1px solid #dcdcdc; 
+}
+@media(max-width: 768px) {
+    .news-wrapper {
+        padding: 5px 0 5px 0;
+    }    
 }
 .news-wrapper .img-wrapper, .news-wrapper .content-wrapper {
     border-radius: 10px;
-    box-shadow: 0 0 30px grey;
+    /* box-shadow: 0 0 30px grey; */
 }
 .news-wrapper:nth-child(odd) .img-wrapper {
     float: left;
     height: 100%;
     padding: 0;
+    margin-left: 30px;
     overflow: hidden;
-    transform: skew(-15deg);
-    -webkit-transform: skew(-15deg);
+    /* transform: skew(-15deg); */
+    /* -webkit-transform: skew(-15deg); */
 }
 .news-wrapper:nth-child(odd) .content-wrapper {
     float: right;
     height: 100%;
-    padding: 0;
+    padding: 0;    
     overflow: hidden;
-    transform: skew(-15deg);
-    -webkit-transform: skew(-15deg);
+    /* transform: skew(-15deg); */
+    /* -webkit-transform: skew(-15deg); */
 }
 .news-wrapper:nth-child(odd) .news-content {
     width:auto;
     padding: 2vw;
     overflow-wrap: break-word;
-    transform: skew(15deg);
-    -webkit-transform: skew(15deg);
+    /* transform: skew(15deg); */
+    /* -webkit-transform: skew(15deg); */
 }
 .news-wrapper:nth-child(even) .news-content {
     width:auto;
     padding: 2vw;
     overflow-wrap: break-word;
-    transform: skew(-15deg);
-    -webkit-transform: skew(-15deg);
+    /* transform: skew(-15deg); */
+    /* -webkit-transform: skew(-15deg); */
 }
 .news-wrapper:nth-child(even) .img-wrapper {
     float: right;
     height: 100%;
-    padding: 0;
+    padding: 0;    
+    margin-right: 30px;
     overflow: hidden;
-    transform: skew(15deg);
-    -webkit-transform: skew(15deg);
+    /* transform: skew(15deg); */
+    /* -webkit-transform: skew(15deg); */
 }
 .news-wrapper:nth-child(even) .content-wrapper {
     float: left;
     height: 100%;
-    padding: 0;
+    padding: 0;    
     overflow: hidden;
-    transform: skew(15deg);
-    -webkit-transform: skew(15deg);
+    /* transform: skew(15deg); */
+    /* -webkit-transform: skew(15deg); */
 }
 .news-img {
     width: auto;
@@ -205,9 +217,226 @@ body {
         height: 20vw;
     }
 }
+/*news content style*/
+/*search page style*/
+.home-content-wrapper {
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.home-content {
+    height: auto;
+}
+.tag-ment {
+    color: #4d4d16;
+    font-weight: bold;
+    margin: 0;
+    padding: 40px;
+    padding-bottom: 10px;
+}
+.tag-cloud, .tag-ment {
+    background-color: ivory;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.tag-cloud {
+    padding: 40px;
+}
+.tag-cloud span{
+    animation: pulse .8s 5;
+}
+.tag-cloud span:hover{
+    cursor: pointer;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
 
-.react-tags__suggestions {
-    z-index: 9999;
+/*search page style*/
+
+/*footer style*/
+
+
+.footer {
+    background-color: grey;
+    border-top: 10px solid rgb(197, 197, 197);
+}
+.footer .sponsors {
+    padding: 10px;
+    background-color: darkgray;
+}
+.footer .sponsored {
+    display: inline-block;
+}
+.footer .sponsored img{
+    height: 40px;
+    padding: 5px;
+    width: auto;
+}
+/*footer style*/
+
+
+/**
+ * <div class="react-tags">
+ *   <div class="react-tags__selected">
+ *     <button class="react-tags__selected-tag">
+ *       <span class="react-tags__selected-tag-name" />
+ *     </button>
+ *   </div>
+ *   <div class="react-tags__search">
+ *     <div class="react-tags__search-input">
+ *       <input />
+ *       <div />
+ *     </div>
+ *     <div class="react-tags__suggestions">
+ *       <ul>
+ *         <li class="is-active">
+ *           <mark />
+ *         </li>
+ *         <li class="is-disabled">
+ *           <mark />
+ *         </li>
+ *       </ul>
+ *     </div>
+ *   </div>
+ */
+.react-tags {
+  position: relative;
+  padding: 6px 0 0 6px;
+  border: 1px solid #D1D1D1;
+  border-radius: 5px;
+
+  /* shared font styles */
+  font-size: 1em;
+  line-height: 1.2;
+
+  /* clicking anywhere will focus the input */
+  cursor: text;
 }
 
-/*news content style*/
+.react-tags.is-focused {
+  border-color: #B1B1B1;
+}
+
+.react-tags__selected {
+  display: inline;
+  border-radius: 5px;
+}
+
+.react-tags__selected-tag {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 6px 6px 0;
+  padding: 6px 8px;
+  border: 1px solid #D1D1D1;
+  border-radius: 2px;
+  background: #F1F1F1;
+
+  /* match the font styles */
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.react-tags__selected-tag:after {
+  content: '\2715';
+  color: #AAA;
+  margin-left: 8px;
+}
+
+.react-tags__selected-tag:hover,
+.react-tags__selected-tag:focus {
+  border-color: #B1B1B1;
+}
+
+.react-tags__search {
+  display: inline-block;
+
+  /* match tag layout */
+  padding: 7px 2px;
+  margin-bottom: 6px;
+
+  /* prevent autoresize overflowing the container */
+  max-width: 100%;
+}
+
+@media screen and (min-width: 30em) {
+
+  .react-tags__search {
+    /* this will become the offsetParent for suggestions */
+    position: relative;
+  }
+
+}
+
+.react-tags__search input {
+  /* prevent autoresize overflowing the container */
+  max-width: 100%;
+
+  /* remove styles and layout from this element */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+
+  /* match the font styles */
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.react-tags__search input::-ms-clear {
+  display: none;
+}
+
+.react-tags__suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 30em) {
+
+  .react-tags__suggestions {
+    width: 240px;
+  }
+
+}
+
+.react-tags__suggestions ul {
+  margin: 4px -1px;
+  padding: 0;
+  list-style: none;
+  background: white;
+  border: 1px solid #D1D1D1;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.react-tags__suggestions li {
+  border-bottom: 1px solid #ddd;
+  padding: 6px 8px;
+}
+
+.react-tags__suggestions li mark {
+  text-decoration: underline;
+  background: none;
+  font-weight: 600;
+}
+
+.react-tags__suggestions li:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+.react-tags__suggestions li.is-active {
+  background: #b7cfe0;
+}
+
+.react-tags__suggestions li.is-disabled {
+  opacity: 0.5;
+  cursor: auto;
+}

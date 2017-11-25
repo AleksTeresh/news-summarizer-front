@@ -8,7 +8,9 @@ import {withRouter} from "react-router"
 import * as coreActions from '../../core/action-creators'
 import * as searchActions from '../../search/action-creators'
 import * as homeActions from '../action-creators'
+import { TagCloud } from 'react-tagcloud';
 import Article from '../../core/components/Article'
+import Carousel from '../../core/components/Carousel'
 
 class HomePage extends Component {
   constructor(props) {
@@ -52,6 +54,7 @@ class HomePage extends Component {
 
     return (
       <div>
+        <Carousel />
         <KeywordCloud
           data={keywordCloudData}
           onTagSelect={this.handleKeywordCloudTagSelect}
