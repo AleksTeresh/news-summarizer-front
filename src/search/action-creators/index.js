@@ -28,3 +28,9 @@ export function fetchArticles (limit, offset) {
     offset: offset
   }
 }
+
+export function clearTags() {
+  return {
+    type: 'search-tags-clear'
+  }
+}

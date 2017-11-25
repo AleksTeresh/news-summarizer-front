@@ -48,6 +48,7 @@ export class Navbar extends React.Component {
                                 <li className={this.state.active ? "active" : " "}><Link to="/economy"><i style={{ color: 'white' }} className="fa fa-usd fa-2x" /><br /><span>ECONOMY</span></Link></li>
                                 <li className={this.state.active ? "active" : " "}><Link to="/tech"><i style={{ color: 'white' }} className="fa fa-desktop fa-2x" /><br /><span>TECHNOLOGY</span></Link></li>
                                 <li className={this.state.active ? "active" : " "}><Link to="/sport"><i style={{ color: 'white' }} className="fa fa-heartbeat fa-2x" /><br /><span>HEALTH</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/search"><i style={{ color: 'white' }} className="fa fa-search fa-2x" /><br /><span>SEARCH</span></Link></li>
                             </ul>
                         </div>
                     </div>
