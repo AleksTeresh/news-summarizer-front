@@ -1,6 +1,7 @@
 'use strict'
 
 import './index.css'
+import 'react-tag-autocomplete/example/styles.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/css/bootstrap-theme.min.css'

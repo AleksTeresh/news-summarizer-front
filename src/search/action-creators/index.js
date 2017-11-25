@@ -21,11 +21,12 @@ export function addTag(suggestionIdx) {
   }
 }
 
-export function fetchArticles (limit, offset) {
+export function fetchArticles (limit, keyWords, categories) {
   return {
     type: 'search-articles-fetch-request',
     limit: limit,
-    offset: offset
+    keyWords: keyWords,
+    categories: categories
   }
 }
 

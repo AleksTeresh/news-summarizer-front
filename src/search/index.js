@@ -17,6 +17,8 @@ export class SearchPage extends Component {
       this.state={
 
       }
+
+      this.props.actions.search.fetchArticles()
   }
   componentWillMount(){
       const { category } = this.props.match.params;
@@ -25,7 +27,6 @@ export class SearchPage extends Component {
       const { category } = this.props.match.params;
       return (
           <div>
-          <Carousel category={category} />
           <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
               <AutoTags />
               <Article articles={this.props.search.article.articles} />

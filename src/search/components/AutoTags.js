@@ -30,6 +30,8 @@ class AutoTags extends Component {
     }
 
     render() {
+
+
         return (
             <div style={{ margin: "0" }}>
                 <ReactTags
