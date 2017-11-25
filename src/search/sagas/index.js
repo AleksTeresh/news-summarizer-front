@@ -1,45 +1,26 @@
 'use strict'
 
-import moment from 'moment'
-
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import * as client from '../../core/client'
+import * as client from '../client'
 
-import config from '../../config'
-
-import type { GigLoadAction, CreateWatchdogAction } from '../actions'
-import type { GigResponse } from '../../core/types'
-
-function * fetchArticles (action: GigLoadAction): Generator<any, any, any> {
+function * fetchArticles (action): Generator<any, any, any> {
   try {
-    const gigResponse: GigResponse = yield call(
-      client.fetchGigs,
-      action.keyPhrase,
-      config.fetchLimit.gig,
-      action.offset,
-      action.ignoreAuthorFilter
-      ? undefined
-      : action.authors,
-      action.genres,
-      action.venues,
-      action.ignoreStartDateFilter
-      ? undefined
-      : moment(action.startDate, 'DD.MM.YYYY').format('YYYY-MM-DD'),
-      action.ignoreEndDateFilter
-      ? undefined
-      : moment(action.endDate, 'DD.MM.YYYY').format('YYYY-MM-DD')
+    const articles = yield call(
+      client.getArticles,
+      action.keyWords,
+      action.limit,
+      0,
+      action.categories
     )
-    yield put({ type: 'search-gigs-load-success', gigs: gigResponse.gigs })
-    yield put({ type: 'search-pagination-gig-count-set', count: gigResponse.count })
+    yield put({ type: 'search-articles-fetch-success', articles: articles })
   } catch (e) {
-    console.error(e)
-    yield put({ type: 'search-gigs-load-failure' })
+    yield put({ type: 'search-articles-fetch-failure' })
   }
 }
 
-function * searchClientSaga (): Generator<any, any, any> {
+function * coreSaga (): Generator<any, any, any> {
   yield takeEvery('search-articles-fetch-request', fetchArticles)
 }
 
-export default searchClientSaga
+export default coreSaga

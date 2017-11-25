@@ -31,12 +31,16 @@ export default class Navbar extends React.Component {
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav">
                                 <li className={this.state.active ? "active touchable" : "touchable"}><a onClick={this.onClickHandler}>MENU</a></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/"><img src="./src/static/img/home.png" alt="global" /><span>HOME</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/global"><img src="./src/static/img/glo.png" alt="global" /><span>GLOBAL NEWS</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/trend"><img src="./src/static/img/trend.png" alt="trend" /><span>TREND</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/economy"><img src="./src/static/img/eco.png" alt="trend" /><span>ECONOMY</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/tech"><img src="./src/static/img/tech.png" alt="trend" /><span>TECHNOLOGY</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/sport"><img src="./src/static/img/sport.png" alt="trend" /><span>SPORT</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}>
+                                  <Link to="/"><i style={{ color: 'white' }} className="fa fa-home fa-2x" />
+                                  <br />
+                                  <span>HOME</span></Link>
+                                  </li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/global"><i style={{ color: 'white' }} className="fa fa-globe fa-2x" /><br /><span>GLOBAL NEWS</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/trend"><i style={{ color: 'white' }} className="fa fa-fire fa-2x" /><br /><span>TREND</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/economy"><i style={{ color: 'white' }} className="fa fa-usd fa-2x" /><br /><span>ECONOMY</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/tech"><i style={{ color: 'white' }} className="fa fa-desktop fa-2x" /><br /><span>TECHNOLOGY</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/sport"><i style={{ color: 'white' }} className="fa fa-heartbeat fa-2x" /><br /><span>HEALTH</span></Link></li>
                             </ul>
                         </div>
                     </div>

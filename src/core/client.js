@@ -29,9 +29,30 @@ const responseAny = (response) => {
 
 const credentialsType = 'same-origin'
 
-export function getArticles () {
-  return fetch('/api/articles')
+export function getArticles (
+  keyWords?,
+  limit = 20,
+  offset = 0,
+  categories?
+) {
+  return fetch(
+    '/api/articles?' +
+    'limit=' + limit +
+    '&offset=' + offset
+    (keyWords ? ('&keyWords=' + keyWords.toArray) : '') +
+    (categories ? ('&categories=' + categories.toArray) : '')
+  )
     .then(responseJson)
-    .then(ArticleUtils.fromPlain)
+    .then((articles) => List(articles).map(ArticleUtils.fromPlain))
     // .catch(error)
+}
+
+export function getKeyWords (limit = 15, offset = 0) {
+  return fetch(
+    '/api/keywords?' +
+    'limit=' + limit +
+    '&offset=' + offset
+  )
+    .then(responseJson)
+    .then((keyWords) => List(keyWords))
 }
