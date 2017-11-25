@@ -6,10 +6,10 @@ import * as client from '../../core/client'
 
 function * fetchArticles (action): Generator<any, any, any> {
   try {
-    console.log(action)
+    // console.log(action.keyWords.toArray())
     const articles = yield call(
       client.getArticles,
-      action.keyWords,
+      action.keyWords.map((p) => p.name),
       action.limit,
       0,
       action.categories

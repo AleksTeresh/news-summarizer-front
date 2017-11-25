@@ -33,11 +33,26 @@ export class SearchPage extends Component {
         <div>
           <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
               <AutoTags
-                onTagAdd={actions.search.addTag}
-                onTagRemove={actions.search.removeTag}
+                onTagAdd={(a) => {
+                    actions.search.addTag(a)
+                    this.props.actions.search.fetchArticles(15, this.props.search.search.tags.push(a))
+                }}
+                onTagRemove={(i) => {
+                  actions.search.removeTag(i)
+                  this.props.actions.search.fetchArticles(15, this.props.search.search.tags.remove(i))
+                }}
                 tags={search.search.tags}
                 suggestions={allKeyWords.map((p) => ({ id: p.id, name: p.word }))} />
-              <Article articles={this.props.search.article.articles} />
+                {
+                  search.article.articles.map((p, i) => (
+                    <Article
+                      summary={p.content.substr(0, 200)}
+                      header={p.header}
+                      imageUrl={p.imageurl}
+                      key={i}
+                    />
+                  ))
+                }
           </div>
         </div>
       )
