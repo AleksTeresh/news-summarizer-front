@@ -34,10 +34,11 @@ class HomePage extends Component {
 
     return articles.map((article, i) => (
       <Article
-        summary={article.content.substr(0, 200)}
+        summary={article.content.substr(0, 100)}
         header={article.header}
         imageUrl={article.imageurl}
         key={i}
+        onClick={() => {this.props.actions.core.openArticleModal(article.content, article.header)}}
       />
     ))
   }

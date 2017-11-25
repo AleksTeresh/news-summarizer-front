@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Article extends Component {
   render() {
-    const {summary, imageUrl, header} = this.props
+    const {summary, imageUrl, header, onClick} = this.props
 
     return (
       <div className="news-wrapper">
@@ -13,6 +13,9 @@ class Article extends Component {
           <div className="news-content">
             <h4>{header}</h4>
             {summary}
+            <div style={{color: 'blue', cursor: 'pointer'}} >
+              <span onClick={onClick}>Read full article</span>
+            </div>
           </div>
         </div>
       </div>

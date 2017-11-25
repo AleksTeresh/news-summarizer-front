@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import * as actionCreators from './action-creators'
+import * as coreActions from '../core/action-creators'
 
 import AutoTags from './components/AutoTags';
 import Article from '../core/components/Article';
@@ -48,10 +49,11 @@ export class SearchPage extends Component {
             {
               search.article.articles.map((p, i) => (
                 <Article
-                  summary={p.content.substr(0, 200)}
+                  summary={p.content.substr(0, 100)}
                   header={p.header}
                   imageUrl={p.imageurl}
                   key={i}
+                  onClick={() => {this.props.actions.core.openArticleModal(p.content, p.header)}}
                 />
               ))
             }
@@ -72,7 +74,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      search: bindActionCreators(actionCreators, dispatch)
+      search: bindActionCreators(actionCreators, dispatch),
+      core: bindActionCreators(coreActions, dispatch)
     }
   }
 }

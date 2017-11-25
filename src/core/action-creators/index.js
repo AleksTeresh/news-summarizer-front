@@ -12,3 +12,17 @@ export function selectKeyWord(keyWord) {
     keyWord
   }
 }
+
+export function openArticleModal(contents, title) {
+  return {
+    type: 'core-article-modal-open',
+    contents,
+    title
+  }
+}
+
+export function closeArticalModal() {
+  return {
+    type: 'core-article-modal-close'
+  }
+}

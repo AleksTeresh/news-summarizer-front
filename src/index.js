@@ -22,7 +22,7 @@ import store from './store'
 
 import HomePage from './home/components'
 import SearchPage from './search'
-import { Header, Carousel } from './core/components'
+import { Header, Carousel, ArticleModal } from './core/components'
 
 const mainContainerDiv = {
   backgroundColor: "#fff",
@@ -44,6 +44,7 @@ const Root = (
             </Switch>
         </div>
         {/* <Footer /> */}
+        <ArticleModal/>
       </div>
     </BrowserRouter>
   </Provider>
