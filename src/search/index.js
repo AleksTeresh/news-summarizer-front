@@ -18,27 +18,36 @@ export class SearchPage extends Component {
 
       }
 
-      this.props.actions.search.fetchArticles()
+      console.log(this.props.search)
+
+      this.props.actions.search.fetchArticles(15, this.props.search.search.tags)
   }
   componentWillMount(){
       const { category } = this.props.match.params;
   }
   render() {
       const { category } = this.props.match.params;
+      const { actions, search, allKeyWords } = this.props
+
       return (
-          <div>
+        <div>
           <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
-              <AutoTags />
+              <AutoTags
+                onTagAdd={actions.search.addTag}
+                onTagRemove={actions.search.removeTag}
+                tags={search.search.tags}
+                suggestions={allKeyWords.map((p) => ({ id: p.id, name: p.word }))} />
               <Article articles={this.props.search.article.articles} />
           </div>
-          </div>
+        </div>
       )
   }
 }
 
 function mapStateToProps (state) {
   return {
-    search: state.search
+    search: state.search,
+    allKeyWords: state.core.keyWords.keyWords
   }
 }
 

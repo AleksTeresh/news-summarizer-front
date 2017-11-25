@@ -39,8 +39,8 @@ export function getArticles (
     '/api/articles?' +
     'limit=' + limit +
     '&offset=' + offset +
-    (keyWords ? ('&keyWords=' + keyWords.toArray) : '') +
-    (categories ? ('&categories=' + categories.toArray) : '')
+    (keyWords ? ('&keyWords=' + keyWords.toArray()) : '') +
+    (categories ? ('&categories=' + categories.toArray()) : '')
   )
     .then(responseJson)
     .then((articleResponse) => List(articleResponse.articles).map(ArticleUtils.fromPlain))

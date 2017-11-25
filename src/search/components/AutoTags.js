@@ -30,15 +30,15 @@ class AutoTags extends Component {
     }
 
     render() {
-
+        console.log(this.props.suggestions)
 
         return (
             <div style={{ margin: "0" }}>
                 <ReactTags
-                    tags={this.state.tags}
-                    suggestions={this.state.suggestions}
-                    handleDelete={this.handleDelete.bind(this)}
-                    handleAddition={this.handleAddition.bind(this)} />
+                    tags={this.props.tags.toArray()}
+                    suggestions={this.props.suggestions.toArray()}
+                    handleDelete={this.props.onTagRemove}
+                    handleAddition={this.props.onTagAdd} />
             </div>
         )
     }

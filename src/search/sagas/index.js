@@ -6,6 +6,7 @@ import * as client from '../../core/client'
 
 function * fetchArticles (action): Generator<any, any, any> {
   try {
+    console.log(action)
     const articles = yield call(
       client.getArticles,
       action.keyWords,
@@ -15,6 +16,7 @@ function * fetchArticles (action): Generator<any, any, any> {
     )
     yield put({ type: 'search-articles-fetch-success', articles: articles })
   } catch (e) {
+    console.error(e)
     yield put({ type: 'search-articles-fetch-failure' })
   }
 }
