@@ -14,10 +14,10 @@ export function removeTag(tagIdx) {
   }
 }
 
-export function addTag(suggestionIdx) {
+export function addTag(tag) {
   return {
     type: 'search-tag-add',
-    suggestionIdx: suggestionIdx
+    tag: tag
   }
 }
 
