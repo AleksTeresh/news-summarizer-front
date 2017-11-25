@@ -5,3 +5,10 @@ export function fetchKeyWords (limit) {
     limit: limit
   }
 }
+
+export function selectKeyWord(keyWord) {
+  return {
+    type: 'core-keyword-select',
+    keyWord
+  }
+}

@@ -3,7 +3,8 @@
 import { List } from 'immutable'
 
 const initialState = {
-  keyWords: List()
+  keyWords: List(),
+  selectedKeyWord: null
 }
 
 export default function keyWordReducer (
@@ -16,7 +17,11 @@ export default function keyWordReducer (
         ...state,
         keyWords: action.keyWords
       }
-
+    case 'core-keyword-select':
+      return {
+        ...state,
+        selectedKeyWord: action.keyWord
+      }
     default:
       return state
   }

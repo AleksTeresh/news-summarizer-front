@@ -9,12 +9,11 @@ export default function homeReducer (
   action
 ) {
   switch (action.type) {
-    case 'home-articles-fetch':
-      return {
-        ...state,
-        keyWords: action.keyWords
-      }
-
+    // case 'home-articles-fetch':
+    //   return {
+    //     ...state,
+    //     keyWords: action.keyWords
+    //   }
     default:
       return state
   }

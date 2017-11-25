@@ -5,6 +5,7 @@ import {bindActionCreators} from "redux"
 
 import KeywordCloud from './KeywordCloud'
 import {withRouter} from "react-router"
+import * as coreActions from '../../core/action-creators'
 
 class HomePage extends Component {
   constructor(props) {
@@ -18,8 +19,9 @@ class HomePage extends Component {
   }
 
   handleKeywordCloudTagSelect(keyword) {
-    const {history} = this.props
+    const {history, actions} = this.props
 
+    actions.core.selectKeyWord(keyword)
     history.push('/keyword')
   }
 
@@ -102,7 +104,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps (dispatch) {
   return {
     actions: {
-      // courseList: bindActionCreators(courseListActions, dispatch)
+      core: bindActionCreators(coreActions, dispatch)
     }
   }
 }
