@@ -40,7 +40,7 @@ export function getArticles (
     'limit=' + limit +
     '&offset=' + offset +
     (keyWords ? ('&keyWords=' + keyWords.toArray()) : '') +
-    (category ? ('&categories=' + category) : '')
+    (category ? ('&category=' + category) : '')
   )
     .then(responseJson)
     .then((articleResponse) => List(articleResponse.articles).map(ArticleUtils.fromPlain))
