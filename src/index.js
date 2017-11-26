@@ -22,7 +22,8 @@ import store from './store'
 
 import HomePage from './home/components'
 import SearchPage from './search'
-import { Header, Footer } from './core/components'
+=======
+import { Header, Footer, ArticleModal } from './core/components'
 
 const minHeight = window.innerHeight;
 const mainContainerDiv = {
@@ -45,6 +46,7 @@ const Root = (
             </Switch>
         </div>
         <Footer />
+        <ArticleModal/>
       </div>
     </BrowserRouter>
   </Provider>
