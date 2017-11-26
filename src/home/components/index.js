@@ -36,7 +36,7 @@ class HomePage extends Component {
 
     return articles.map((article, i) => (
       <Article
-        summary={article.content.substr(0, 100)}
+        summary={article.summary}
         header={article.header}
         imageUrl={article.imageurl}
         key={i}

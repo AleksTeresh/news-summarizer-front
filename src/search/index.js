@@ -50,7 +50,7 @@ export class SearchPage extends Component {
             {
               search.article.articles.map((p, i) => (
                 <Article
-                  summary={p.content.substr(0, 100)}
+                  summary={p.summary}
                   header={p.header}
                   imageUrl={p.imageurl}
                   key={i}

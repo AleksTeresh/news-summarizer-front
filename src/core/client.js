@@ -56,3 +56,9 @@ export function getKeyWords (limit = 15, offset = 0) {
     .then(responseJson)
     .then((keyWords) => List(keyWords))
 }
+
+export function getSummary(content) {
+  return fetch (
+    '/api/summary?content=' + content
+  ).then(responseJson)
+}
