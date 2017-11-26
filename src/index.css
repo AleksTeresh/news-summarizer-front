@@ -250,6 +250,7 @@ body {
 }
 .tag-cloud {
     padding: 40px;
+    text-align: center;
 }
 .tag-cloud span{
     animation: pulse .8s 5;

@@ -14,8 +14,8 @@ class Article extends Component {
         <div className="content-wrapper col-xs-7">
           <div className="news-content">
             {summary}
-            <div style={{color: 'blue', cursor: 'pointer'}}>
-              <span onClick={onClick}>Read full article</span>
+            <div>
+              <span style={{color: 'blue', cursor: 'pointer'}} onClick={onClick}>Read full article</span>
             </div>
             <div>Emotions: {emotions}</div>
           </div>
