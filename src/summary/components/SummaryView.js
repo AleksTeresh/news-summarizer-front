@@ -15,22 +15,20 @@ class SummaryView extends React.Component {
 
   render() {
     const {value} = this.state
-    const {summary, emotions, tags} = this.props
-
-    console.log(value)
+    const {emotions, tags, summary} = this.props.state
 
     return (
       <div style={{marginTop: '100px'}}>
         <FormControl onChange={(v) => {this.setState({value: v.target.value})}} componentClass="textarea"
                      placeholder="textarea"/>
-        <Button onClick={() => {console.log(value); this.props.actions.summary.fetchSummary(value)}}>Summarize</Button>
+        <Button onClick={() => {this.props.actions.summary.fetchSummary(value)}}>Summarize</Button>
 
         <h3>Summary</h3>
         <div>{summary}</div>
-        <h3>Emotions</h3>
-        <div>{emotions}</div>
-        <h3>Tags</h3>
-        <div>{tags}</div>
+        {/*<h3>Emotions</h3>*/}
+        {/*<div>{emotions}</div>*/}
+        {/*<h3>Tags</h3>*/}
+        {/*<div>{tags}</div>*/}
       </div>
     )
   }
@@ -38,7 +36,7 @@ class SummaryView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    ...state.summary
+    state: state.summary
   }
 }
 

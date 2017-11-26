@@ -11,7 +11,7 @@ export default function summaryReducer (
   action
 ) {
   switch (action.type) {
-    case 'summary-fetch-request-success':
+    case 'summary-fetch-success':
       return {
         summary: action.summary,
         emotions: action.emotions,
