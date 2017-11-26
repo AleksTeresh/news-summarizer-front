@@ -22,7 +22,6 @@ import store from './store'
 
 import HomePage from './home/components'
 import SearchPage from './search'
-=======
 import { Header, Footer, ArticleModal } from './core/components'
 
 const minHeight = window.innerHeight;
@@ -42,7 +41,8 @@ const Root = (
             {/* <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/> */}
             <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route exact path="/category/:category" component={SearchPage} />
+                <Route exact path="/search" component={SearchPage} />
+                <Route exact path="/:category" component={SearchPage} />
             </Switch>
         </div>
         <Footer />

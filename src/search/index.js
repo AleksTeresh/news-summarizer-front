@@ -38,11 +38,11 @@ export class SearchPage extends Component {
             styles={{position: 'relative'}}
             onTagAdd={(a) => {
                     actions.search.addTag(a)
-                    this.props.actions.search.fetchArticles(15, this.props.search.search.tags.push(a))
+                    this.props.actions.search.fetchArticles(15, this.props.search.search.tags.push(a), category)
                 }}
             onTagRemove={(i) => {
                   actions.search.removeTag(i)
-                  this.props.actions.search.fetchArticles(15, this.props.search.search.tags.remove(i))
+                  this.props.actions.search.fetchArticles(15, this.props.search.search.tags.remove(i), category)
                 }}
             tags={search.search.tags}
             suggestions={allKeyWords.map((p) => ({ id: p.id, name: p.word }))}/>
