@@ -8,12 +8,6 @@ class Carousel extends Component {
             category: "Home"
         }
     }
-    componentDidMount() {
-        console.log("props", this.props.category);
-    }
-    componentDidUpdate() {
-        console.log("props", this.props.category);
-    }
     renderControllers() {
         return (
             <div>
@@ -58,21 +52,21 @@ class Carousel extends Component {
         return (
             <div className="carousel-inner">{/*  take off div carousel-inner when it returns valus using maping  */}
                 <div className="item active">
-                    <img src="https://wallpaper.wiki/wp-content/uploads/2017/05/Photos-Download-Desktop-HD-Wallpapers-Wide.jpg" alt="Los Angeles" style={{ width: "100%" }} />
+                    <img src="http://ziplinesanvigilio.s3-eu-west-1.amazonaws.com/wp-content/uploads/2015/09/04152156/15-slide-news.jpg" alt="Los Angeles" style={{ width: "100%" }} />
                     <div className="item-text-wrapper">
                         <h3 className="item-text">{itemText}</h3>
                     </div>
                 </div>
 
                 <div className="item">
-                    <img src="https://wallpaper.wiki/wp-content/uploads/2017/05/Photos-Download-Desktop-HD-Wallpapers-Wide.jpg" alt="Chicago" style={{ width: "100%" }} />
+                    <img src="http://www.mediawordwaves.com/images/layerslider/Media-Montage-900.jpg" alt="Chicago" style={{ width: "100%" }} />
                     <div className="item-text-wrapper">
                         <h3 className="item-text">{itemText}</h3>
                     </div>
                 </div>
 
                 <div className="item">
-                    <img src="https://wallpaper.wiki/wp-content/uploads/2017/05/Photos-Download-Desktop-HD-Wallpapers-Wide.jpg" alt="New york" style={{ width: "100%" }} />
+                    <img src="https://www.procureitright.com/wp-content/uploads/banner_news.jpg" alt="New york" style={{ width: "100%" }} />
                     <div className="item-text-wrapper">
                         <h3 className="item-text">{itemText}</h3>
                     </div>
