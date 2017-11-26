@@ -29,9 +29,8 @@ class HomePage extends Component {
 
     actions.search.clearTags()
     actions.search.addTag({ id: keyword.id, name: keyword.value })
-    history.push('/category/search')
+    history.push('/search')
   }
-
   renderArticles() {
     const { articles } = this.props
 
@@ -41,13 +40,13 @@ class HomePage extends Component {
         header={article.header}
         imageUrl={article.imageurl}
         key={i}
-        onClick={() => {this.props.actions.core.openArticleModal(article.content, article.header)}}
+        onClick={() => { this.props.actions.core.openArticleModal(article.content, article.header) }}
       />
     ))
   }
   render() {
     const { keyWords } = this.props
-
+    const { articles } = this.props
     const keywordCloudData = keyWords.map(({ weight, word, id }) => ({
       value: word,
       count: weight,

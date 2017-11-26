@@ -11,7 +11,6 @@ const KeywordCloud = ({ data, onTagSelect }) => {
     minSize = 8;
     maxSize = 18;
   }
-  console.log(currentWidth);
   const customRenderer = (tag, size, color) => (
     <span key={tag.value}
       style={{
