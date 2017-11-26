@@ -55,6 +55,7 @@ export class SearchPage extends Component {
                   imageUrl={p.imageurl}
                   key={i}
                   onClick={() => {this.props.actions.core.openArticleModal(p.content, p.header)}}
+                  emotions={p.emotions}
                 />
               ))
             }

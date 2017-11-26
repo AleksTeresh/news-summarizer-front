@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Article extends Component {
   render() {
 
-    const {summary, imageUrl, header, onClick} = this.props
+    const {summary, imageUrl, header, onClick, emotions} = this.props
 
     return (
       <div className="news-wrapper">
@@ -17,6 +17,7 @@ class Article extends Component {
             <div style={{color: 'blue', cursor: 'pointer'}}>
               <span onClick={onClick}>Read full article</span>
             </div>
+            <div>Emotions: {emotions}</div>
           </div>
 
         </div>

@@ -40,7 +40,8 @@ class HomePage extends Component {
         header={article.header}
         imageUrl={article.imageurl}
         key={i}
-        onClick={() => { this.props.actions.core.openArticleModal(article.content, article.header) }}
+        onClick={() => {this.props.actions.core.openArticleModal(article.content, article.header)}}
+        emotions={article.emotions}
       />
     ))
   }
