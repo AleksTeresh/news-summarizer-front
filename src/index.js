@@ -22,6 +22,7 @@ import store from './store'
 
 import HomePage from './home/components'
 import SearchPage from './search'
+import SummaryView from './summary/components/SummaryView'
 import { Header, Footer, ArticleModal } from './core/components'
 
 const minHeight = window.innerHeight;
@@ -42,7 +43,9 @@ const Root = (
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/search" component={SearchPage} />
+
                 <Route exact path="/:category" component={SearchPage} />
+                <Route exact path="/test/summary" component={SummaryView} />
             </Switch>
         </div>
         <Footer />
