@@ -1,35 +1,30 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Article extends Component {
-    renderArticle () {
-        let i = 0;
-        return (
-            <div>
-            {
-              this.props.articles.map((p, i) => (
-                <div key={i} className="news-wrapper">
-                    <div className="img-wrapper col-xs-3">
-                        <img className="news-img" alt="article img" src="p.imageUrl" />
-                    </div>
-                    <div className="content-wrapper col-xs-8">
-                        <div className="news-content">
-                          {p.summary}
-                        </div>
-                    </div>
-                </div>
-              ))
-            }
-            </div>
-        )
-    }
+  render() {
 
-    render () {
-      return (
-          <div className="article-wrapper">
-              {this.renderArticle()}
+    const {summary, imageUrl, header, onClick, emotions} = this.props
+
+    return (
+      <div className="news-wrapper">
+        <h4 className="news-header"><strong>{header}</strong></h4>
+        <div className="img-wrapper col-xs-4">
+          <img className="news-img" alt="article img" src={imageUrl}/>
+        </div>
+        <div className="content-wrapper col-xs-7">
+          <div className="news-content">
+            {summary}
+            <div style={{color: 'blue', cursor: 'pointer'}}>
+              <span onClick={onClick}>Read full article</span>
+            </div>
+            <div>Emotions: {emotions}</div>
           </div>
-      )
-    }
+
+        </div>
+        <div className="divisionLine"/>
+      </div>
+    )
+  }
 }
 
 export default Article;

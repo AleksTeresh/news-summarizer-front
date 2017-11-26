@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 
-import {connect} from "react-redux"
-import {bindActionCreators} from "redux"
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+import { bindActionCreators } from "redux"
 
 import KeywordCloud from './KeywordCloud'
-import {withRouter} from "react-router"
+import { withRouter } from "react-router"
 import * as coreActions from '../../core/action-creators'
 import * as searchActions from '../../search/action-creators'
+import * as homeActions from '../action-creators'
+import { TagCloud } from 'react-tagcloud';
+import Article from '../../core/components/Article'
+import Carousel from '../../core/components/Carousel'
 
 class HomePage extends Component {
   constructor(props) {
@@ -16,56 +21,34 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    console.log("Welcome to Homepage");
+    this.props.actions.home.fetchArticles(10)
   }
 
   handleKeywordCloudTagSelect(keyword) {
-    const {history, actions} = this.props
+    const { history, actions } = this.props
 
     actions.search.clearTags()
-    actions.search.addTag(keyword.value)
+    actions.search.addTag({ id: keyword.id, name: keyword.value })
     history.push('/search')
   }
+  renderArticles() {
+    const { articles } = this.props
 
-  renderArticle() {
-    let i = 0;
-    return (
-      <div>
-        <div key={i++} className="news-wrapper">
-          <div className="img-wrapper col-xs-3">
-            <img className="news-img" alt="article img" src="../../../src/static/img/tracer-wallpaper-wide.jpg" />
-          </div>
-          <div className="content-wrapper col-xs-8">
-            <div className="news-content">
-            </div>
-          </div>
-        </div>
-        <div key={i++} className="news-wrapper">
-          <div className="img-wrapper col-xs-3">
-            <img className="news-img" alt="article img" src="../../../src/static/img/tracer-wallpaper-wide.jpg" />
-          </div>
-          <div className="content-wrapper col-xs-8">
-            <div className="news-content">
-              <p>dfasdfasdfdsfadsfkamsdkfmaskdfmaksdfmkadsmfkeam kamefi ajif jaei fai jfia ejifa eifaji iaj fi</p>
-            </div>
-          </div>
-        </div>
-        <div key={i++} className="news-wrapper">
-          <div className="img-wrapper col-xs-3">
-            <img className="news-img" alt="article img" src="../../../src/static/img/tracer-wallpaper-wide.jpg" />
-          </div>
-          <div className="content-wrapper col-xs-8">
-            <div className="news-content">
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return articles.map((article, i) => (
+      <Article
+        summary={article.content.substr(0, 100)}
+        header={article.header}
+        imageUrl={article.imageurl}
+        key={i}
+        onClick={() => {this.props.actions.core.openArticleModal(article.content, article.header)}}
+        emotions={article.emotions}
+      />
+    ))
   }
   render() {
-    const {keyWords} = this.props
-
-    const keywordCloudData = keyWords.map(({weight, word, id}) => ({
+    const { keyWords } = this.props
+    const { articles } = this.props
+    const keywordCloudData = keyWords.map(({ weight, word, id }) => ({
       value: word,
       count: weight,
       id
@@ -73,24 +56,39 @@ class HomePage extends Component {
 
     return (
       <div>
-        <KeywordCloud
+        <Carousel />
+        <h2 className="text-center tag-ment">You might be interested!</h2>
+        <KeywordCloud className="text-center tag-cloud"
           data={keywordCloudData}
           onTagSelect={this.handleKeywordCloudTagSelect}
         />
-        <div className="col-md-12 pull-left">
-          {this.renderArticle()}
+        <div className="home-content-wrapper">
+          <div className="col-md-8 pull-left home-content">
+            {this.renderArticles()}
+          </div>
+          <div className="col-md-4 ">
+            <label>Global</label>
+            <ul className="list-group">
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">1</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">2</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">3</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">4</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">5</span></Link>
+            </ul>
+          </div>
+          <div className="col-md-4 ">
+            <label>Trend</label>
+            <ul className="list-group">
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">1</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">2</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">3</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">4</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">5</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">6</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">7</span></Link>
+            </ul>
+          </div>
         </div>
-        {/*<div className="col-md-3">*/}
-          {/*<ul className="list-group">Global*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-          {/*</ul>*/}
-        {/*</div>*/}
       </div>
     );
   }
@@ -99,15 +97,17 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    keyWords: state.core.keyWords.keyWords
+    keyWords: state.core.keyWords.keyWords,
+    articles: state.home.articles
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: {
       core: bindActionCreators(coreActions, dispatch),
-      search: bindActionCreators(searchActions, dispatch)
+      search: bindActionCreators(searchActions, dispatch),
+      home: bindActionCreators(homeActions, dispatch)
     }
   }
 }

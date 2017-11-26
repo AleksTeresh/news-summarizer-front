@@ -1,10 +1,10 @@
 'use strict'
 
-import './index.css'
 import 'react-tag-autocomplete/example/styles.css'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/css/bootstrap-theme.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap-theme.min.css'
+import './index.css'
 
 import 'font-awesome/css/font-awesome.min.css'
 import 'font-awesome/fonts/fontawesome-webfont.woff2'
@@ -20,18 +20,16 @@ import { syncHistoryWithStore } from 'react-router-redux'
 
 import store from './store'
 
-
 import HomePage from './home/components'
-import SearchPage from './search/components'
+import SearchPage from './search'
+import { Header, Footer, ArticleModal } from './core/components'
 
-import { Header, Carousel } from './core/components'
-
-import SearchView from './search/components'
-
+const minHeight = window.innerHeight;
 const mainContainerDiv = {
   backgroundColor: "#fff",
   paddingBottom: "20px",
-  boxShadow: "0 0 30px grey"
+  boxShadow: "0 0 30px grey",
+  minHeight: minHeight
 }
 
 const Root = (
@@ -40,14 +38,15 @@ const Root = (
       <div>
         <Header />
         <div className="container" style={ mainContainerDiv }>
-            {/*<Carousel />*/}
             {/* <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/> */}
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/search" component={SearchPage} />
+                <Route exact path="/:category" component={SearchPage} />
             </Switch>
         </div>
-        {/* <Footer /> */}
+        <Footer />
+        <ArticleModal/>
       </div>
     </BrowserRouter>
   </Provider>

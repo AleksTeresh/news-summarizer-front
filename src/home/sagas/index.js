@@ -13,6 +13,7 @@ function * fetchArticles (action): Generator<any, any, any> {
     )
     yield put({ type: 'home-articles-fetch-success', articles: articles })
   } catch (e) {
+    console.log(e)
     yield put({ type: 'home-articles-fetch-failure' })
   }
 }
