@@ -32,6 +32,7 @@ export class SearchPage extends Component {
 
     return (
       <div>
+        <Carousel category={category} />
         <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
           <AutoTags
             styles={{position: 'relative'}}
