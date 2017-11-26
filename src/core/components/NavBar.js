@@ -40,16 +40,16 @@ export class Navbar extends React.Component {
                             <ul className="nav navbar-nav">
                                 <li className={this.state.active ? "active touchable" : "touchable"}><a onClick={this.onClickHandler}>MENU</a></li>
                                 <li className={this.state.active ? "active" : " "}>
-                                  <Link to="/"><i style={{ color: 'white' }} className="fa fa-home fa-2x" />
+                                  <Link to="/" onClick={() => this.setState({active: false})}><i style={{ color: 'white' }} className="fa fa-home fa-2x" />
                                   <br />
                                   <span>HOME</span></Link>
                                   </li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/global"><i style={{ color: 'white' }} className="fa fa-globe fa-2x" /><br /><span>GLOBAL NEWS</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/trend"><i style={{ color: 'white' }} className="fa fa-fire fa-2x" /><br /><span>TREND</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/economy"><i style={{ color: 'white' }} className="fa fa-usd fa-2x" /><br /><span>ECONOMY</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/tech"><i style={{ color: 'white' }} className="fa fa-desktop fa-2x" /><br /><span>TECHNOLOGY</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/health"><i style={{ color: 'white' }} className="fa fa-heartbeat fa-2x" /><br /><span>HEALTH</span></Link></li>
-                                <li className={this.state.active ? "active" : " "}><Link to="/search"><i style={{ color: 'white' }} className="fa fa-search fa-2x" /><br /><span>SEARCH</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/global" onClick={() => this.setState({active: false})}><i style={{ color: 'white' }} className="fa fa-globe fa-2x" /><br /><span>GLOBAL NEWS</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/trend" onClick={() => this.setState({active: false})}><i style={{ color: 'white' }} className="fa fa-fire fa-2x" /><br /><span>TREND</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/economy" onClick={() => this.setState({active: false})}><i style={{ color: 'white' }} className="fa fa-usd fa-2x" /><br /><span>ECONOMY</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/tech" onClick={() => this.setState({active: false})}><i style={{ color: 'white' }} className="fa fa-desktop fa-2x" /><br /><span>TECHNOLOGY</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/health" onClick={() => this.setState({active: false})}><i style={{ color: 'white' }} className="fa fa-heartbeat fa-2x" /><br /><span>HEALTH</span></Link></li>
+                                <li className={this.state.active ? "active" : " "}><Link to="/search" onClick={() => this.setState({active: false})}><i style={{ color: 'white' }} className="fa fa-search fa-2x" /><br /><span>SEARCH</span></Link></li>
                             </ul>
                         </div>
                     </div>

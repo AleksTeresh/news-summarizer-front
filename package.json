@@ -9,6 +9,7 @@
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
+    "randomcolor": "^0.5.3",
     "react": "^16.1.1",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
@@ -18,11 +19,12 @@
     "react-router-redux": "^4.0.8",
     "react-scripts": "1.0.17",
     "react-tag-autocomplete": "^5.5.0",
+    "react-tag-cloud": "^1.0.1",
     "react-tagcloud": "^1.2.0",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0"
   },
-  "proxy": "http://localhost:8085",
+  "proxy": "http://192.168.43.12:8085",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
