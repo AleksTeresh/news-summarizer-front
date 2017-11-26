@@ -17,6 +17,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { syncHistoryWithStore } from 'react-router-redux'
+import ScrollToTop from 'react-scroll-up'
 
 import store from './store'
 
@@ -37,19 +38,22 @@ const Root = (
     <BrowserRouter>
       <div>
         <Header />
-        <div className="container" style={ mainContainerDiv }>
-            {/* <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/> */}
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/search" component={SearchPage} />
-                <Route exact path="/:category" component={SearchPage} />
-            </Switch>
+        <div className="container" style={mainContainerDiv}>
+          {/* <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/> */}
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/search" component={SearchPage} />
+            <Route exact path="/:category" component={SearchPage} />
+          </Switch>
         </div>
         <Footer />
-        <ArticleModal/>
+        <ScrollToTop showUnder={160}>
+          <div className="toTop"><span className="glyphicon glyphicon-chevron-up"></span></div>
+        </ScrollToTop>
+        <ArticleModal />
       </div>
     </BrowserRouter>
   </Provider>
-  )
+)
 
 ReactDOM.render(Root, document.getElementById('root'))

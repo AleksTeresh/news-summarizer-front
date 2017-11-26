@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
 class Footer extends Component {
     render() {
         return (
-            <div className="footer">
+            <div id="footer" className="footer">
                 <div className="sponsors container">
                     <h5 className="sponsored"><strong>This web app supports</strong></h5>
                     <div className="sponsored"><a href="https://hackjunction.com/" title="JUNCTION" target="_blank"><img src="http://i.imgur.com/ZrifrOS.png" alt="JUNCTION" /></a></div>
