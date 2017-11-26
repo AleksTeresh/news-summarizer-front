@@ -58,21 +58,21 @@ class Carousel extends Component {
         return (
             <div className="carousel-inner">{/*  take off div carousel-inner when it returns valus using maping  */}
                 <div className="item active">
-                    <img src="http://www.100hdwallpapers.com/wallpapers/1920x1080/distant_planet_3d-hd_wallpapers.jpg" alt="Los Angeles" style={{ width: "100%" }} />
+                    <img src="https://wallpaper.wiki/wp-content/uploads/2017/05/Photos-Download-Desktop-HD-Wallpapers-Wide.jpg" alt="Los Angeles" style={{ width: "100%" }} />
                     <div className="item-text-wrapper">
                         <h3 className="item-text">{itemText}</h3>
                     </div>
                 </div>
 
                 <div className="item">
-                    <img src="http://eskipaper.com/images/thief-game-wallpaper-hd-1.jpg" alt="Chicago" style={{ width: "100%" }} />
+                    <img src="https://wallpaper.wiki/wp-content/uploads/2017/05/Photos-Download-Desktop-HD-Wallpapers-Wide.jpg" alt="Chicago" style={{ width: "100%" }} />
                     <div className="item-text-wrapper">
                         <h3 className="item-text">{itemText}</h3>
                     </div>
                 </div>
 
                 <div className="item">
-                    <img src="http://www.100hdwallpapers.com/wallpapers/1920x1080/distant_planet_3d-hd_wallpapers.jpg" alt="New york" style={{ width: "100%" }} />
+                    <img src="https://wallpaper.wiki/wp-content/uploads/2017/05/Photos-Download-Desktop-HD-Wallpapers-Wide.jpg" alt="New york" style={{ width: "100%" }} />
                     <div className="item-text-wrapper">
                         <h3 className="item-text">{itemText}</h3>
                     </div>

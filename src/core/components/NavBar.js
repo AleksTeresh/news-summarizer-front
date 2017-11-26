@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actionCreators from '../action-creators'
+import logo from '../../../src/logo2.png';
 
 export class Navbar extends React.Component {
     constructor (props) {
@@ -32,7 +33,7 @@ export class Navbar extends React.Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <img id="logo" className="pull-left" src="./logo2.png" alt="logo" />
+                            <img id="logo" className="pull-left" src={logo} alt="logo" />
                             <a className="navbar-brand" href="/">RED Grenade</a>
                         </div>
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import {connect} from "react-redux"
-import {bindActionCreators} from "redux"
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+import { bindActionCreators } from "redux"
 
 import KeywordCloud from './KeywordCloud'
-import {withRouter} from "react-router"
+import { withRouter } from "react-router"
 import * as coreActions from '../../core/action-creators'
 import * as searchActions from '../../search/action-creators'
 import * as homeActions from '../action-creators'
@@ -24,15 +25,15 @@ class HomePage extends Component {
   }
 
   handleKeywordCloudTagSelect(keyword) {
-    const {history, actions} = this.props
+    const { history, actions } = this.props
 
     actions.search.clearTags()
-    actions.search.addTag({id: keyword.id, name: keyword.value})
-    history.push('/search')
+    actions.search.addTag({ id: keyword.id, name: keyword.value })
+    history.push('/category/search')
   }
 
   renderArticles() {
-    const {articles} = this.props
+    const { articles } = this.props
 
     return articles.map((article, i) => (
       <Article
@@ -44,9 +45,9 @@ class HomePage extends Component {
     ))
   }
   render() {
-    const {keyWords} = this.props
+    const { keyWords } = this.props
 
-    const keywordCloudData = keyWords.map(({weight, word, id}) => ({
+    const keywordCloudData = keyWords.map(({ weight, word, id }) => ({
       value: word,
       count: weight,
       id
@@ -55,24 +56,38 @@ class HomePage extends Component {
     return (
       <div>
         <Carousel />
-        <KeywordCloud
+        <h2 className="text-center tag-ment">You might be interested!</h2>
+        <KeywordCloud className="text-center tag-cloud"
           data={keywordCloudData}
           onTagSelect={this.handleKeywordCloudTagSelect}
         />
-        <div className="col-md-12 pull-left">
-          {this.renderArticles()}
+        <div className="home-content-wrapper">
+          <div className="col-md-8 pull-left home-content">
+            {this.renderArticles()}
+          </div>
+          <div className="col-md-4 ">
+            <label>Global</label>
+            <ul className="list-group">
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">1</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">2</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">3</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">4</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">5</span></Link>
+            </ul>
+          </div>
+          <div className="col-md-4 ">
+            <label>Trend</label>
+            <ul className="list-group">
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">1</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">2</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">3</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">4</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">5</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">6</span></Link>
+              <Link className="list-group-item" to="/">HeadLine<span className="badge">7</span></Link>
+            </ul>
+          </div>
         </div>
-        {/*<div className="col-md-3">*/}
-          {/*<ul className="list-group">Global*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-            {/*<li className="list-group-item">HeadLine</li>*/}
-          {/*</ul>*/}
-        {/*</div>*/}
       </div>
     );
   }
@@ -86,7 +101,7 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: {
       core: bindActionCreators(coreActions, dispatch),
