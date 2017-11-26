@@ -41,6 +41,7 @@ const Root = (
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/search" component={SearchPage} />
+                <Route exact path="/:category" component={SearchPage} />
             </Switch>
         </div>
         {/* <Footer /> */}
