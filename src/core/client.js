@@ -33,14 +33,14 @@ export function getArticles (
   keyWords?,
   limit = 20,
   offset = 0,
-  categories?
+  category?
 ) {
   return fetch(
     '/api/articles?' +
     'limit=' + limit +
     '&offset=' + offset +
     (keyWords ? ('&keyWords=' + keyWords.toArray()) : '') +
-    (categories ? ('&categories=' + categories.toArray()) : '')
+    (category ? ('&categories=' + category) : '')
   )
     .then(responseJson)
     .then((articleResponse) => List(articleResponse.articles).map(ArticleUtils.fromPlain))

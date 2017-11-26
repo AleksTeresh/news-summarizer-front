@@ -149,7 +149,7 @@ body {
 /*news content style*/
 .news-wrapper {
     padding: 30px 30px 30px 30px;
-    position: relative;
+    /*position: relative;*/
     width: auto;
     height: auto;
     border-bottom: 1px solid #dcdcdc; 
